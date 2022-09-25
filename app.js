@@ -13,5 +13,5 @@ ctx.fill();
 ctx.beginPath();
 ctx.rect(350, 350, 100, 100);
 ctx.rect(450, 450, 100, 100);
-ctx.fillStyle = "red";
+ctx.fillStyle = "green";
 ctx.fill();
