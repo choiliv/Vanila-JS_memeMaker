@@ -1,53 +1,37 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const lineWidth = document.getElementById("line-width");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
-canvas.width = 800;
-canvas.height = 800;
+  canvas.width = 800;
+  canvas.height = 800;
+  ctx.lineWidth = lineWidth.value;
+  let isPainting = false;
+  
+   function onMove (event) {
+    if (isPainting) {
+     ctx.lineTo(event.offsetX, event.offsetY);
+     ctx.stroke();
+     return;
+   } 
+     ctx.moveTo(event.offsetX, event.offsetY);
+}
 
-ctx.fillRect(200, 200, 10, 200);
-ctx.fillRect(400, 200, 10, 200);
-ctx.lineWidth = 3;
-ctx.strokeRect(280, 300, 50, 100);
-ctx.fillRect(200, 200, 200, 10);
-ctx.moveTo(200, 200);
-ctx.lineTo(310, 110);
-ctx.lineTo(410, 200);
-ctx.stroke();
+   function onMouseDown () {
+      isPainting= true;
+   }
 
-ctx.beginPath();
-ctx.arc(500, 350, 20, 0, 2 * Math.PI);
-ctx.fill();
+   function onMouseUp (){
+     isPainting = false;
+     ctx.beginPath();
+   }
 
-ctx.beginPath();
-ctx.fillStyle = "white";
-ctx.arc(490, 350, 3, 0, 2 * Math.PI);
-ctx.arc(510, 350, 3, 0, 2 * Math.PI);
-ctx.fill();
+   function onLineWidthChange (event){
+      ctx.lineWidth = event.target.value;
+   }
 
-ctx.beginPath();
-ctx.strokeStyle = "white";
-ctx.arc(500, 355, 6, 0, Math.PI);
-ctx.stroke();
+  canvas.addEventListener("mousemove", onMove);
+  canvas.addEventListener("mousedown", onMouseDown);
+  canvas.addEventListener("mouseup", onMouseUp);
+  canvas.addEventListener("mouseleave",onMouseUp);
 
-ctx.beginPath();
-ctx.fillStyle = "black";
-ctx.fillRect(480, 375, 3, 30);
-ctx.fillRect(515, 375, 3, 30);
-ctx.fillRect(490, 375, 20, 28);
-ctx.fillRect(492, 405, 5, 40);
-ctx.fillRect(503, 405, 5, 40);
+  lineWidth.addEventListener("change", onLineWidthChange);
