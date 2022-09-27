@@ -78,7 +78,8 @@ const CANVAS_HEIHGT = 800;
 
    function onEraseClick () {
       ctx.strokeStyle = "white";
-
+      isFilling = false;
+      modeBtn.innerText = "Fill";
    }
 
   canvas.addEventListener("mousemove", onMove);
