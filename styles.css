@@ -1,9 +1,20 @@
+@import "reset.css";
 
+body{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: gainsboro;
+    padding: 20px;
+    font-family:system-ui;
+}
 
 canvas {
-    width: 800px;
-    height: 800px;
-    border: 1px solid black;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
 }
 
 body {
@@ -12,8 +23,68 @@ body {
     align-items: center;
 }
 
+.btns {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.color-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
 .color-option {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    border: 3px solid white;
+    cursor: pointer;
+    transition: transform ease-in-out 0.1s;
+}
+
+.color-option:hover {
+    transform: scale(1.2);
+}
+
+input#color {
+    width: 50px;
+    height:30px;
+    overflow:hidden;
+    background-color:white;
+}
+
+button,
+label {
+    all: unset; 
+    padding: 10px 0px;
+    text-align: center;
+    background-color:cornflowerblue;
+    color:white;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: opacity linear 0.1s;
+}
+
+
+button:hover {
+    opacity: 0.85;
+}
+
+
+input#text {
+    all:unset;
+    padding:10px 0px;
+    border-radius: 10px;
+    font-weight: 500;
+    text-align: center;
+    background-color: white;
+}
+
+input#file {
+    display: none;
 }
